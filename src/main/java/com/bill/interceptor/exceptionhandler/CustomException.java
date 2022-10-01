@@ -1,4 +1,4 @@
-package com.bill.exceptionhandler;
+package com.bill.interceptor.exceptionhandler;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

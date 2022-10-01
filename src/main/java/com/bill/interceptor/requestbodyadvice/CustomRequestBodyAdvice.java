@@ -1,11 +1,10 @@
-package com.bill.requestbodyadvice;
+package com.bill.interceptor.requestbodyadvice;
 
-import com.bill.InterceptorController;
+import com.bill.controller.InterceptorController;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.HttpInputMessage;
 import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.RequestBodyAdviceAdapter;
 

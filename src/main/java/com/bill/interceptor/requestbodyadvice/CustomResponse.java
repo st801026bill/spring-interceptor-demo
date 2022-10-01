@@ -1,4 +1,4 @@
-package com.bill.requestbodyadvice;
+package com.bill.interceptor.requestbodyadvice;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
