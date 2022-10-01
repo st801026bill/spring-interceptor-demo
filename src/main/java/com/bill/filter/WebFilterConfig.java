@@ -12,7 +12,7 @@ import java.io.IOException;
 @Slf4j
 @Component
 @ServletComponentScan
-@WebFilter(urlPatterns = "/filter/**", filterName = "WebFilter")
+@WebFilter(urlPatterns = "/**", filterName = "WebFilter")
 public class WebFilterConfig implements Filter {
     private final String name = "webFilter";
 
