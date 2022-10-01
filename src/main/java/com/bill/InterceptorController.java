@@ -2,8 +2,12 @@ package com.bill;
 
 import com.bill.exceptionhandler.CustomException;
 import com.bill.exceptionhandler.ReturnCode;
+import com.bill.requestbodyadvice.CustomRequest;
+import com.bill.requestbodyadvice.CustomResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -21,4 +25,15 @@ public class InterceptorController {
     public void exceptionHandler() {
         throw new CustomException(ReturnCode.FAIL);
     }
+
+    @Operation(summary = "RequestBodyAdvice", description = "RequestBodyAdvice")
+    @PostMapping("/requestbodyadvice/demo")
+    public void requestbodyadvice(@RequestBody CustomRequest request) {}
+
+    @Operation(summary = "ResponseBodyAdvice", description = "ResponseBodyAdvice")
+    @PostMapping("/responsebodyadvice/demo")
+    public CustomResponse responsebodyadvice(@RequestBody CustomRequest request) {
+        return new CustomResponse("data");
+    }
+
 }

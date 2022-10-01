@@ -17,24 +17,19 @@ import javax.servlet.http.HttpServletResponse;
 
 @Configuration
 public class HandlerInterceptorConfig implements WebMvcConfigurer {
-
-    @Autowired
-    private CustomHandlerInterceptor customHandlerInterceptor;
-
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(customHandlerInterceptor).addPathPatterns("/**");
+        registry.addInterceptor(new CustomHandlerInterceptor()).addPathPatterns("/**/demo");
     }
 }
 
 @Slf4j
-@Component
 class CustomHandlerInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         HandlerMethod method = (HandlerMethod) handler;
-        log.info("[HandlerInterceptor] CustomHandlerInterceptor preHandle, {}", method.getMethod().getName());
+        log.info("[HandlerInterceptor] CustomHandlerInterceptor preHandle(), {}", method.getMethod().getName());
 
         return true;
     }
@@ -42,14 +37,14 @@ class CustomHandlerInterceptor implements HandlerInterceptor {
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
         HandlerMethod method = (HandlerMethod) handler;
-        log.info("[HandlerInterceptor] CustomHandlerInterceptor postHandle, {}", method.getMethod().getName());
+        log.info("[HandlerInterceptor] CustomHandlerInterceptor postHandle(), {}", method.getMethod().getName());
 
-        response.getOutputStream().write("append content".getBytes());
+//        response.getOutputStream().write("append content".getBytes());
     }
 
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
         HandlerMethod method = (HandlerMethod) handler;
-        log.info("[HandlerInterceptor] CustomHandlerInterceptor afterCompletion, {}", method.getMethod().getName());
+        log.info("[HandlerInterceptor] CustomHandlerInterceptor afterCompletion(), {}", method.getMethod().getName());
     }
 }

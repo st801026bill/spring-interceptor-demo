@@ -18,7 +18,7 @@ public class FilterConfig {
         registrationBean.setFilter(new CustomFilter());
 
         //攔截規則
-        registrationBean.addUrlPatterns("*");
+        registrationBean.addUrlPatterns("/**/demo");
 
         //初始化參數
         registrationBean.addInitParameter("name", "customFilter");
@@ -42,8 +42,8 @@ class CustomFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        log.info("[Filter] CustomFilter {} handle before", name);
+        log.info("[Filter] CustomFilter {} doFilter() before", name);
         filterChain.doFilter(servletRequest, servletResponse);
-        log.info("[Filter] CustomFilter {} handle after", name);
+        log.info("[Filter] CustomFilter {} doFilter() after", name);
     }
 }

@@ -12,7 +12,7 @@ import java.io.IOException;
 @Slf4j
 @Component
 @ServletComponentScan
-@WebFilter(urlPatterns = "/**", filterName = "WebFilter")
+@WebFilter(urlPatterns = "/**/demo", filterName = "WebFilter")
 public class WebFilterConfig implements Filter {
     private final String name = "webFilter";
 
@@ -23,8 +23,8 @@ public class WebFilterConfig implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        log.info("[Filter] WebFilter {} handle before", name);
+        log.info("[Filter] WebFilter {} doFilter() before", name);
         filterChain.doFilter(servletRequest, servletResponse);
-        log.info("[Filter] WebFilter {} handle after", name);
+        log.info("[Filter] WebFilter {} doFilter() after", name);
     }
 }
