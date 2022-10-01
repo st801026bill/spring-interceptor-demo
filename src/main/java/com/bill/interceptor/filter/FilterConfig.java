@@ -18,7 +18,7 @@ public class FilterConfig {
         registrationBean.setFilter(new CustomFilter());
 
         //攔截規則
-        registrationBean.addUrlPatterns("/**/demo");
+        registrationBean.addUrlPatterns("*");
 
         //初始化參數
         registrationBean.addInitParameter("name", "customFilter");
