@@ -14,25 +14,18 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 @RestController
 public class InterceptorController {
-    @Operation(summary = "ExceptionHandler", description = "ExceptionHandler")
+    @Operation(summary = "Exception", description = "Exception")
     @GetMapping("/exception/demo")
-    public void exceptionHandler() {
-        log.info("[Controller] InterceptorController exceptionHandler()");
+    public void exception() {
+        log.info("[Controller] InterceptorController exception()");
         throw new CustomException(ReturnCode.FAIL);
     }
 
-    @Operation(summary = "RequestBodyAdvice", description = "RequestBodyAdvice")
-    @PostMapping("/requestbodyadvice/demo")
-    public void requestbodyadvice(@RequestBody CustomRequest request) {
-        log.info("[Controller] InterceptorController requestbodyadvice()");
+    @Operation(summary = "Request", description = "Request")
+    @PostMapping("/request/demo")
+    public CustomResponse request(@RequestBody CustomRequest request) {
+        log.info("[Controller] InterceptorController request()");
+        return new CustomResponse("data");
 //        throw new CustomException(ReturnCode.FAIL);
     }
-
-    @Operation(summary = "ResponseBodyAdvice", description = "ResponseBodyAdvice")
-    @PostMapping("/responsebodyadvice/demo")
-    public CustomResponse responsebodyadvice(@RequestBody CustomRequest request) {
-        log.info("[Controller] InterceptorController responsebodyadvice()");
-        return new CustomResponse("data");
-    }
-
 }
